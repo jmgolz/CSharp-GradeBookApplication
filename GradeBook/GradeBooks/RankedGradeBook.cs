@@ -25,9 +25,9 @@ namespace GradeBook.GradeBooks
 						return 'C';
 				 } else if(averageGrade > 0.60 && averageGrade <= 0.80) {
 						return 'D';
-				 } else {
-						return 'F';
-				 }
+				 } 
+				 
+				 return 'F';
 			}
     }
 }
