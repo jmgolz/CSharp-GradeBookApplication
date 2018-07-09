@@ -14,16 +14,25 @@ namespace GradeBook.GradeBooks
 			public override char GetLetterGrade(double averageGrade)
 			{
 				 if(Students.Count < 5){
-						throw new InvalidOperationException("Ranked grading requires a minimum of 5 students to work.");
+						throw new InvalidOperationException("Ranked grading requires at least 5 students.");
 				 }
 
-				 if(averageGrade <= 0.20){
+				 double computedAverageGrade = 0.0d;
+
+				 foreach (var student in Students)
+				 {
+						computedAverageGrade += student.AverageGrade;
+				 }
+
+				 computedAverageGrade = computedAverageGrade / Students.Count;
+
+				 if(computedAverageGrade >= 0.8d){
 						return 'A';
-				 } else if (averageGrade > 0.20 && averageGrade <= 0.40) {
+				 } else if (computedAverageGrade < 0.8d && computedAverageGrade >= 0.6d) {
 						return 'B';
-				 } else if (averageGrade > 0.40 && averageGrade <= 0.60) {
+				 } else if (computedAverageGrade < 0.6d && computedAverageGrade >= 0.4d) {
 						return 'C';
-				 } else if(averageGrade > 0.60 && averageGrade <= 0.80) {
+				 } else if(computedAverageGrade < 0.4d && computedAverageGrade >= 0.2d) {
 						return 'D';
 				 } 
 				 
